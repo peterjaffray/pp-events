@@ -1,8 +1,9 @@
-function petesTracker(action, category, label) {
+function fireEvent(action, category, label) {
   window.uetq = window.uetq || [];
   window._paq = window._paq || [];
   window.dataLayer = window.dataLayer || [];
   window.fbq = window.fbq || [];
+  console.log(`ACTION: ${action} | CATEGORY: ${category} | LABEL: ${label}`);
 
   if (typeof dataLayer != "undefined") {
     dataLayer.push({
@@ -11,7 +12,7 @@ function petesTracker(action, category, label) {
       eventAction: action,
       eventLabel: label,
     });
-    console.log(`dataLayer ${action} ${category} ${label} success`);
+    console.log(`dataLayer success`);
   }
 
   if (typeof fbq != "undefined") {
@@ -19,7 +20,7 @@ function petesTracker(action, category, label) {
       content_category: category,
       content_name: label,
     });
-    console.log(`fbq ${action} ${category} ${label} success`);
+    console.log(`fbq success`);
   }
 
   if (typeof uetq != "undefined") {
@@ -27,17 +28,13 @@ function petesTracker(action, category, label) {
       event_category: category,
       event_label: label,
     });
-    console.log(`uetq  ${action} ${category} ${label} success`);
+    console.log(`uetq success`);
   }
 
   if (typeof _paq != "undefined") {
     window._paq.push(["trackEvent", category, action, label]);
-    console.log(`_paq${action} ${category} ${label} success`);
+    console.log(`paq success`);
   }
-}
-
-function gracefulTracking() {
-  return;
 }
 
 document.addEventListener(
@@ -46,7 +43,7 @@ document.addEventListener(
     var action = "Successful Contact Form 7 Submission";
     var category = "Form";
     var label = "CF7 wpcf7mailsent";
-    petesTracker(action, category, label);
+    fireEvent(action, category, label);
   },
   false
 );
@@ -55,40 +52,32 @@ jQuery(document).ready(function ($) {
   $(document).on("submit_success", function (evt) {
     var action = "Successful Form Submission";
     var category = "Form";
-    var label = evt.target.name + " Elementor Pro Form";
-    petesTracker(action, category, label);
+    var label = `${evt.target.name} Elementor Pro Form`;
+    fireEvent(action, category, label);
   });
 
   $('a[href^="tel"]').click(function () {
     var phone = this.href.replace("tel:", "");
-    var action = "Phone Number Click on " + phone;
+    var action = `Phone Number Click on ${phone}`;
     var category = "Phone";
-    var label = phone + " Click";
-    petesTracker(action, category, label);
+    var label = `${phone} Click`;
+    fireEvent(action, category, label);
   });
 
   $('a[href^="mailto"]').click(function () {
     var email = this.href.replace("mailto:", "");
-    var action = "Email Click on " + email;
+    var action = `Email Click on ${email}`;
     var category = "Email";
-    var label = email + " Click";
-    petesTracker(action, category, label);
+    var label = `${email} Click`;
+    fireEvent(action, category, label);
   });
 
   $(".trackButton").click(function () {
-    var currentUrl = this.href.replace("https://", "");
-    var destUrl = this.text();
+    var destUrl = $(".trackButton"attr('href');
     var buttonText = $(".trackButton").text();
-    var action =
-      "Button click on " +
-      button +
-      " destURL: " +
-      destUrl +
-      " buttonText " +
-      buttonText;
+    var action = `${buttonText},  ${destUrl}`;
     var category = "Button";
-    var label = button + " Click";
-
-    petesTracker(action, category, label);
+    var label = "Button Click";
+    fireEvent(action, category, label);
   });
 });
