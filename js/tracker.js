@@ -73,7 +73,7 @@ jQuery(document).ready(function ($) {
   });
 
   $(".trackButton").click(function () {
-    var destUrl = $(".trackButton"attr('href');
+    var destUrl = $(".trackButton"attr('href'));
     var buttonText = $(".trackButton").text();
     var action = `${buttonText},  ${destUrl}`;
     var category = "Button";
