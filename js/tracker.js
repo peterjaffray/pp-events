@@ -40,7 +40,7 @@ function fireEvent(action, category, label) {
 document.addEventListener(
   "wpcf7mailsent",
   function (event) {
-    var action = "Successful Contact Form 7 Submission";
+    var action = "CF7 Submission";
     var category = "Form";
     var label = "CF7 wpcf7mailsent";
     fireEvent(action, category, label);
