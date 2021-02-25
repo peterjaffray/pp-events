@@ -80,7 +80,9 @@ jQuery(document).ready(function ($) {
 	});
 
 	$('.trackButton').click(function () {
-		var action = $('.trackButton').text();
+		//I would love to get the link text and destination url of the child element a few elements down and report that as the action
+		//var action = $('.trackButton').children('a').attr('href');
+		var action = 'N/A'; 
 		var category = 'Button';
 		var label = 'Button Click';
 		fireEvent(action, category, label);
