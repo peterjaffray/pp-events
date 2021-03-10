@@ -55,6 +55,17 @@ document.addEventListener(
 	false
 );
 
+document.addEventListener(
+	'nfFormSubmitResponse',
+	function (event, response, id) {
+		var action = 'Ninja Form Submission';
+		var category = 'Form';
+		var label = 'Ninja' + respons.id;
+		fireEvent(action, category, label);
+	},
+	false
+);
+
 jQuery(document).ready(function ($) {
 	$(document).on('submit_success', function (evt) {
 		var action = 'Successful Form Submission';
