@@ -66,36 +66,37 @@ document.addEventListener(
 	false
 );
 
-jQuery(document).ready(function ($) {
-	$(document).on('submit_success', function (evt) {
-		var action = 'Successful Form Submission';
-		var category = 'Form';
-		var label = `${evt.target.name} Elementor Pro Form`;
-		fireEvent(action, category, label);
-	});
+jQuery(function () {
+  jQuery(document).on("submit_success", function (evt) {
+    var action = "Successful Form Submission";
+    var category = "Form";
+    var label = `${evt.target.name} Elementor Pro Form`;
+    fireEvent(action, category, label);
+  });
 
-	$('a[href^="tel"]').click(function () {
-		var phone = this.href.replace('tel:', '');
-		var action = `Phone Number Click on ${phone}`;
-		var category = 'Phone';
-		var label = `${phone} Click`;
-		fireEvent(action, category, label);
-	});
+  jQuery('a[href^="tel"]').click(function () {
+    var phone = this.href.replace("tel:", "");
+    var action = `Phone Number Click on ${phone}`;
+    var category = "Phone";
+    var label = `${phone} Click`;
+    fireEvent(action, category, label);
+  });
 
-	$('a[href^="mailto"]').click(function () {
-		var email = this.href.replace('mailto:', '');
-		var action = `Email Click on ${email}`;
-		var category = 'Email';
-		var label = `${email} Click`;
-		fireEvent(action, category, label);
-	});
+  jQuery('a[href^="mailto"]').click(function () {
+    var email = this.href.replace("mailto:", "");
+    var action = `Email Click on ${email}`;
+    var category = "Email";
+    var label = `${email} Click`;
+    fireEvent(action, category, label);
+  });
 
-	$('.trackButton').click(function () {
-		//I would love to get the link text and destination url of the child element a few elements down and report that as the action
-		//var action = $('.trackButton').children('a').attr('href');
-		var action = 'N/A'; 
-		var category = 'Button';
-		var label = 'Button Click';
-		fireEvent(action, category, label);
-	});
+  jQuery(".trackButton").click(function () {
+    var dest = this.href.replace("https://", "");
+    var action = dest;
+    var category = "Button";
+    var label = "Button Click";
+    fireEvent(action, category, label);
+  });
 });
+
+
